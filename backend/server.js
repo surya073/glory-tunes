@@ -8,8 +8,13 @@ const orderRoute = require("./routes/order");      // ✅ import at top
 const app = express();
 
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5000"]
+  origin: [
+    "http://localhost:5173",  // Vite dev server
+    "http://localhost:3000",  // alt dev port
+    "http://localhost",       // Docker nginx frontend (port 80)
+  ]
 }));
+
 app.use(express.json());
 
 app.use("/api", contactRoute);
