@@ -9,9 +9,9 @@ const app = express();
 
 app.use(cors({
   origin: [
-    "http://localhost:5173",  // Vite dev server
-    "http://localhost:3000",  // alt dev port
-    "http://localhost",       // Docker nginx frontend (port 80)
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://surya073.github.io",
   ]
 }));
 
