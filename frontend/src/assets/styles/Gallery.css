@@ -1,0 +1,242 @@
+/* ── Section ── */
+.gallery {
+  position: relative;
+  background: var(--dark);
+  overflow: hidden;
+}
+
+/* Background image — mirrors hero pattern */
+.gallery-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gallery-bg__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.18;
+}
+
+/* All content above bg */
+.gallery > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Grid ── */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ── Card ── */
+.portfolio-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--dark-card);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.portfolio-card:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(212, 175, 55, 0.1);
+}
+
+/* ── Visual area ── */
+.portfolio-card__visual {
+  position: relative;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Wave ── */
+.portfolio-card__wave {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  opacity: 0.4;
+}
+
+.portfolio-card__wave-bar {
+  display: block;
+  width: 2px;
+  background: var(--gold-gradient);
+  border-radius: 2px;
+  animation: waveBar 1.4s ease-in-out infinite alternate;
+}
+
+.portfolio-card:hover .portfolio-card__wave-bar,
+.portfolio-card__wave.is-playing .portfolio-card__wave-bar {
+  animation-play-state: running;
+  opacity: 0.8;
+}
+
+/* ── Play button ── */
+.portfolio-card__play {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+  z-index: 2;
+  padding-left: 3px;
+}
+
+.portfolio-card:hover .portfolio-card__play,
+.portfolio-card__play.is-playing {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: var(--gold-glow-strong);
+}
+
+/* ── Duration badge ── */
+.portfolio-card__duration {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: rgba(212, 175, 55, 0.6);
+  background: rgba(5,5,5,0.6);
+  padding: 3px 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.portfolio-card__duration.is-counting {
+  color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.15);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+}
+
+/* ── Player row (seek bar) ── */
+.portfolio-card__player {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px 4px;
+}
+
+.portfolio-card__time {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: rgba(212, 175, 55, 0.55);
+  min-width: 32px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Track wrapper */
+.portfolio-card__track {
+  position: relative;
+  flex: 1;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Gold fill */
+.portfolio-card__track-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #d4af37, #f5e27a);
+  pointer-events: none;
+  transition: width 0.3s linear;
+}
+
+.portfolio-card__track:hover .portfolio-card__track-fill {
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.6);
+}
+
+/* Seek input — desktop only (not rendered on touch) */
+.portfolio-card__seek {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  transform: scaleY(5);
+}
+
+/* ── Card info ── */
+.portfolio-card__info {
+  padding: 18px 20px;
+}
+
+.portfolio-card__category {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  margin-bottom: 6px;
+}
+
+.portfolio-card__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.3px;
+}
+
+/* ── Footer note ── */
+.gallery__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 40px;
+  font-size: 13px;
+  color: rgba(248,248,248,0.35);
+}
+
+.gallery__footer-icon {
+  color: var(--gold-primary);
+  opacity: 0.5;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Mobile / touch — play button always visible ── */
+@media (hover: none) {
+  .portfolio-card__play {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: var(--gold-glow-strong);
+  }
+}

@@ -1,0 +1,75 @@
+.floating-btn {
+  position: fixed;
+  bottom: 32px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 999;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.floating-btn--whatsapp {
+  right: 24px;
+  background: #25D366;
+  color: white;
+  box-shadow: 0 4px 24px rgba(37, 211, 102, 0.4);
+}
+
+.floating-btn--call {
+  left: 24px;
+  background: var(--gold-gradient);
+  color: var(--black);
+  box-shadow: 0 4px 24px rgba(212, 175, 55, 0.4);
+}
+
+/* Pulse rings */
+.floating-btn__pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #25D366;
+  animation: floatingPulse 2s ease-out infinite;
+  opacity: 0;
+}
+
+.floating-btn__pulse--delay {
+  animation-delay: 0.6s;
+}
+
+@keyframes floatingPulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* Glow for call */
+.floating-btn__glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  filter: blur(10px);
+  opacity: 0;
+  animation: callGlow 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes callGlow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+@media (max-width: 480px) {
+  .floating-btn {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+  }
+  .floating-btn--whatsapp { right: 16px; }
+  .floating-btn--call { left: 16px; }
+}

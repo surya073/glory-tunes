@@ -1,0 +1,136 @@
+.how-it-works {
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+
+.how-it-works::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.steps-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  position: relative;
+}
+
+.step-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  position: relative;
+}
+
+.step-card {
+  flex: 1;
+  padding: 36px 24px;
+  text-align: center;
+  position: relative;
+}
+
+.step-num {
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(212, 175, 55, 0.07);
+  letter-spacing: -3px;
+  margin-bottom: -20px;
+  font-family: var(--font-body);
+}
+
+.step-icon-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.step-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1.5px solid rgba(212, 175, 55, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-primary);
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.step-card:hover .step-icon {
+  background: rgba(212, 175, 55, 0.15);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.25);
+  transform: scale(1.05);
+}
+
+.step-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+
+.step-desc {
+  font-size: 13px;
+  color: var(--white-muted);
+  line-height: 1.65;
+}
+
+/* Connector */
+.step-connector {
+  flex-shrink: 0;
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.4), rgba(212, 175, 55, 0.15));
+  margin-top: 80px;
+  transform-origin: left;
+  position: relative;
+}
+
+.step-connector::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: -4px;
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid rgba(212, 175, 55, 0.5);
+  border-top: 1px solid rgba(212, 175, 55, 0.5);
+  transform: rotate(45deg);
+}
+
+@media (max-width: 900px) {
+  .steps-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .step-wrapper {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+  }
+  .step-connector {
+    width: 1px;
+    height: 40px;
+    margin-top: 0;
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0.4), rgba(212, 175, 55, 0.1));
+    transform-origin: top;
+  }
+  .step-connector::after {
+    right: -4px;
+    bottom: -5px;
+    top: auto;
+    transform: rotate(135deg);
+  }
+}
