@@ -35,11 +35,11 @@ export default function OrderModal({ isOpen, onClose, serviceName }) {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, service: serviceName }),
-      });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/order`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...form, service: serviceName }),
+    });
 
       const data = await res.json();
 
